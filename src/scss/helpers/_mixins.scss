@@ -1,0 +1,43 @@
+// Bigger Hitbox ==
+@mixin bigger-hitbox($scaleX: 2, $scaleY: 2, $debug: false) {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        transform: scale($scaleX, $scaleY);
+
+        @if ($debug) {
+            background-color: rgba(#f00, 30%);
+        }
+    }
+}
+
+// Overlay ==
+@mixin overlay($background: rgb(0 0 0 / 40%)) {
+    position: relative;
+    &::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: $background;
+    }
+}
+
+// Hiding ==
+@mixin hide {
+    display: none !important;
+}
+@mixin erase {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}

@@ -1,0 +1,38 @@
+// PRODUCT IMAGES ==
+.product-grid-item :is(.product-image-link, .hover-img) img, // Listing Main
+.woocommerce-product-gallery .woocommerce-product-gallery__image img, // Single Main
+.woocommerce-product-gallery .product-image-thumbnail img, // Single Thumbnails
+.mini_cart_item img, // Mini Cart
+.cart_item img, // Cart Page
+.wd-sticky-btn-thumbnail img, // Sticky Add to Cart
+.wd-product-nav-thumb img, // Products Nav
+.widget-product-wrap img // Sidebar Widget
+{
+    background-color: #fff;
+
+    &[src$=".png"],
+    &[src$=".svg"] {
+        padding: 8%;
+        object-fit: contain !important;
+    }
+}
+
+// Portrait AR
+.product-grid-item :is(.product-image-link, .hover-img) img,
+.woocommerce-product-gallery .woocommerce-product-gallery__image img,
+.woocommerce-product-gallery .product-image-thumbnail img {
+    aspect-ratio: 0.88;
+    height: auto;
+    object-fit: cover !important;
+    filter: contrast(93%);
+}
+
+// 1:1 AR
+.mini_cart_item img,
+.cart_item img,
+.wd-sticky-btn-thumbnail img,
+.wd-product-nav-thumb img .widget-product-wrap img {
+    aspect-ratio: 1;
+    height: auto;
+    filter: contrast(90%);
+}

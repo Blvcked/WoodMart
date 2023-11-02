@@ -1,0 +1,103 @@
+$loaderStyle: "fill-logo--y";
+
+#siteLoader {
+    position: fixed;
+    z-index: var(--layer--above-all);
+
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 900ms var(--easeOut);
+}
+
+.page--loaded #siteLoader {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@if $loaderStyle == "fill-logo--x" {
+    #siteLoader {
+        --initial-opacity: 20%;
+    }
+
+    .site-loader__image {
+        &-bg {
+            opacity: var(--initial-opacity);
+            position: absolute;
+        }
+
+        &-filler {
+            @media (prefers-reduced-motion: no-preference) {
+                animation: clipLeftToRight 2400ms infinite var(--easeOut);
+
+                @keyframes clipLeftToRight {
+                    0% {
+                        opacity: var(--initial-opacity);
+                        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+                    }
+                    50% {
+                        opacity: 100%;
+                        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                    }
+                    100% {
+                        opacity: var(--initial-opacity);
+                        clip-path: polygon(
+                            100% 0%,
+                            100% 0%,
+                            100% 100%,
+                            100% 100%
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+
+@if $loaderStyle == "fill-logo--y" {
+    #siteLoader {
+        --initial-opacity: 20%;
+    }
+
+    .site-loader__image {
+        &-bg {
+            opacity: var(--initial-opacity);
+            position: absolute;
+        }
+
+        &-filler {
+            @media (prefers-reduced-motion: no-preference) {
+                animation: clipBottomToTop 2400ms infinite var(--easeOut);
+
+                @keyframes clipBottomToTop {
+                    0% {
+                        opacity: var(--initial-opacity);
+
+                        clip-path: polygon(0% 0%, 100% 0, 100% 0%, 0% 0%);
+                    }
+                    50% {
+                        opacity: 100%;
+                        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                    }
+                    100% {
+                        opacity: var(--initial-opacity);
+                        clip-path: polygon(
+                            0% 100%,
+                            100% 100%,
+                            100% 100%,
+                            0% 100%
+                        );
+                    }
+                }
+            }
+        }
+    }
+}

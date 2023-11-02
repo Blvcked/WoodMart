@@ -1,0 +1,18 @@
+:root {
+    // Spacing
+    --gutter: 1.5rem;
+
+    // Z-Index
+    --layer--above: 390;
+    --layer--above-all: 400;
+
+    // Eases
+    --easeIn: cubic-bezier(0.55, 0.08, 0.68, 0.53);
+    --easeOut: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --easeInOut: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    // Colors
+    --primary-color: var(--wd-primary-color);
+    --accent-color: var(--wd-alternative-color);
+    --text-color: var(--wd-text-color);
+}

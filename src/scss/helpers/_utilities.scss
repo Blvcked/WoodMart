@@ -1,0 +1,15 @@
+.bigger-hitbox {
+    @include bigger-hitbox;
+}
+
+.hide {
+    @include hide;
+}
+
+.erase {
+    @include erase;
+}
+
+.d-flex {
+    display: flex;
+}

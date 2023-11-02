@@ -1,0 +1,13 @@
+// Modal Backdrops ==
+.wd-close-side, // Mini Cart
+.pswp__bg, // PhotoSwipe Gallery
+.mfp-bg	// WoodMart Modals
+{
+    background-color: rgb(255 255 255 / 60%) !important;
+    backdrop-filter: blur(18px) grayscale(50%) contrast(60%);
+}
+
+// PhotoSwipe Gallery
+.pswp__top-bar {
+    @include hide;
+}
