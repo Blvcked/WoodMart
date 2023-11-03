@@ -15,7 +15,7 @@ function disable_emojis() {
 }
 
 // Remove WP Adminbar Bump
-add_action('get_header', 'remove_adminbar_bump');
-function remove_adminbar_bump() {
-    remove_action('wp_head', '_admin_bar_bump_cb');
-}
+// add_action('get_header', 'remove_adminbar_bump');
+// function remove_adminbar_bump() {
+//     remove_action('wp_head', '_admin_bar_bump_cb');
+// }

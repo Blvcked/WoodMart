@@ -9,11 +9,17 @@
 .widget-product-wrap img // Sidebar Widget
 {
     background-color: #fff;
+    filter: contrast(93%);
 
     &[src$=".png"],
     &[src$=".svg"] {
         padding: 8%;
         object-fit: contain !important;
+    }
+
+    &[src$=".jpeg"],
+    &[src$=".jpg"] {
+        object-fit: cover !important;
     }
 }
 
@@ -21,10 +27,8 @@
 .product-grid-item :is(.product-image-link, .hover-img) img,
 .woocommerce-product-gallery .woocommerce-product-gallery__image img,
 .woocommerce-product-gallery .product-image-thumbnail img {
-    aspect-ratio: 0.88;
+    aspect-ratio: 3/4;
     height: auto;
-    object-fit: cover !important;
-    filter: contrast(93%);
 }
 
 // 1:1 AR
@@ -34,5 +38,4 @@
 .wd-product-nav-thumb img .widget-product-wrap img {
     aspect-ratio: 1;
     height: auto;
-    filter: contrast(90%);
 }

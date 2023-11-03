@@ -2,14 +2,15 @@
 @import "helpers/utilities";
 @import "helpers/vars";
 
-// // [COMPONENTS]
+// [COMPONENTS]
 @import "components/loader";
 // @import "components/sticky";
-// @import "components/slide";
+@import "components/slide";
 @import "components/modal";
-// @import "components/gdpr";
 // @import "components/cookies";
+// @import "components/gdpr";
 // @import "components/admin";
 
 // [WOOCOMMERCE]
 @import "libs/woocommerce/product-images";
+@import "libs/woodmart";

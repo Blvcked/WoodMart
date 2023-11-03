@@ -1,20 +1,16 @@
-$loaderStyle: "fill-logo--y";
+$loaderStyle: "fill-logo--down"; // simple || fill-logo--up/down/right/left
 
 #siteLoader {
     position: fixed;
     z-index: var(--layer--above-all);
-
     top: 0;
     left: 0;
-
     height: 100%;
     width: 100%;
     background-color: #fff;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: opacity 900ms var(--easeOut);
 }
 
@@ -23,46 +19,31 @@ $loaderStyle: "fill-logo--y";
     pointer-events: none;
 }
 
-@if $loaderStyle == "fill-logo--x" {
-    #siteLoader {
-        --initial-opacity: 20%;
-    }
+@mixin clipAnimation($name, $startingClip, $transitioningClip, $endingClip) {
+    animation: $name 2400ms infinite var(--easeOut);
 
-    .site-loader__image {
-        &-bg {
+    @keyframes #{$name} {
+        0% {
             opacity: var(--initial-opacity);
-            position: absolute;
+            clip-path: $startingClip;
         }
-
-        &-filler {
-            @media (prefers-reduced-motion: no-preference) {
-                animation: clipLeftToRight 2400ms infinite var(--easeOut);
-
-                @keyframes clipLeftToRight {
-                    0% {
-                        opacity: var(--initial-opacity);
-                        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-                    }
-                    50% {
-                        opacity: 100%;
-                        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-                    }
-                    100% {
-                        opacity: var(--initial-opacity);
-                        clip-path: polygon(
-                            100% 0%,
-                            100% 0%,
-                            100% 100%,
-                            100% 100%
-                        );
-                    }
-                }
-            }
+        50% {
+            opacity: 100%;
+            clip-path: $transitioningClip;
+        }
+        100% {
+            opacity: var(--initial-opacity);
+            clip-path: $endingClip;
         }
     }
 }
 
-@if $loaderStyle == "fill-logo--y" {
+@if $loaderStyle ==
+    "fill-logo--up" or
+    "fill-logo--down" or
+    "fill-logo--right" or
+    "fill-logo--left"
+{
     #siteLoader {
         --initial-opacity: 20%;
     }
@@ -75,27 +56,40 @@ $loaderStyle: "fill-logo--y";
 
         &-filler {
             @media (prefers-reduced-motion: no-preference) {
-                animation: clipBottomToTop 2400ms infinite var(--easeOut);
+                @if $loaderStyle == "fill-logo--up" {
+                    @include clipAnimation(
+                        clipUp,
+                        polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%),
+                        polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%),
+                        polygon(0% 0%, 100% 0, 100% 0%, 0% 0%)
+                    );
+                }
 
-                @keyframes clipBottomToTop {
-                    0% {
-                        opacity: var(--initial-opacity);
+                @if $loaderStyle == "fill-logo--down" {
+                    @include clipAnimation(
+                        clipDown,
+                        polygon(0% 0%, 100% 0, 100% 0%, 0% 0%),
+                        polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%),
+                        polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)
+                    );
+                }
 
-                        clip-path: polygon(0% 0%, 100% 0, 100% 0%, 0% 0%);
-                    }
-                    50% {
-                        opacity: 100%;
-                        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-                    }
-                    100% {
-                        opacity: var(--initial-opacity);
-                        clip-path: polygon(
-                            0% 100%,
-                            100% 100%,
-                            100% 100%,
-                            0% 100%
-                        );
-                    }
+                @if $loaderStyle == "fill-logo--right" {
+                    @include clipAnimation(
+                        clipRight,
+                        polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%),
+                        polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%),
+                        polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)
+                    );
+                }
+
+                @if $loaderStyle == "fill-logo--left" {
+                    @include clipAnimation(
+                        clipLeft,
+                        polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%),
+                        polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%),
+                        polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)
+                    );
                 }
             }
         }

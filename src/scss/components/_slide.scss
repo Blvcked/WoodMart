@@ -1,0 +1,10 @@
+.flickity-page-dots,
+.owl-dots {
+    mix-blend-mode: exclusion;
+}
+
+.flickity-button,
+.wd-btn-arrow .owl-nav {
+    mix-blend-mode: difference;
+    filter: invert(100%);
+}

@@ -2,33 +2,33 @@
 |           GLOBALS AREA             		 |
 +-----------------------------------------+ */
 
-window.DEBUG = true;
+window.DEBUG = false;
 
 /* +-----------------------------------------+
 |           EVENT LISTENERS AREA             |
 +-----------------------------------------+ */
 
 // DOC Ready
-function documentReady() {
-    getHeight(".whb-header", ".whb-general-header", ".whb-header-bottom");
-}
-document.addEventListener("DOMContentLoaded", documentReady, false);
+// function documentReady() {
+//     getHeight(".whb-header", ".whb-general-header", ".whb-header-bottom");
+// }
+// document.addEventListener("DOMContentLoaded", documentReady, false);
 
 // WINDOW Load
 function windowLoad() {
-    isThresholdSurpassed();
-    isFooterInview(".footer-container");
-    // exitLoader("#siteLoader");
+    // isThresholdSurpassed();
+    // isFooterInview(".footer-container");
+    exitLoader("#siteLoader");
 }
 window.addEventListener("load", windowLoad, false);
 
 // WINDOW Scroll
-function windowScroll() {
-    isThresholdSurpassed();
-    isFooterInview(".footer-container");
-    getScrollDirection();
-}
-window.addEventListener("scroll", windowScroll, { passive: true });
+// function windowScroll() {
+//     isThresholdSurpassed();
+//     isFooterInview(".footer-container");
+//     getScrollDirection();
+// }
+// window.addEventListener("scroll", windowScroll, { passive: true });
 
 /* +-----------------------------------------+
 |           CUSTOM FUNCTIONS AREA            |
