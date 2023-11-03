@@ -22,6 +22,6 @@ function enqueue_custom_frontend() {
 	);
 }
 
-foreach ( glob( get_stylesheet_directory() . '/include/*.php' ) as $file ) {
+foreach ( glob( get_stylesheet_directory() . '/include/_*.php' ) as $file ) {
     require_once $file;
 }
